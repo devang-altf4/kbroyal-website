@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { SmoothScrollProvider } from './components/SmoothScrollProvider';
-import { SplitPreloader } from './components/SplitPreloader';
+import { Preloader } from './components/Preloader';
 import { FogCanvas } from './components/FogCanvas';
 import { SiteHeader } from './components/SiteHeader';
+import { MobileBottomBar } from './components/MobileBottomBar';
 import { FullscreenMenu } from './components/FullscreenMenu';
-import { MaskedHeroParallax } from './components/MaskedHeroParallax';
-import { CurtainPhilosophySection } from './components/CurtainPhilosophySection';
-import { StaggeredGridShowcase } from './components/StaggeredGridShowcase';
-import { CompanySection } from './components/CompanySection';
-import { SiteFooter } from './components/SiteFooter';
+import { RoninStyleScrolly } from './components/RoninStyleScrolly';
 import { ContactModal } from './components/ContactModal';
 
 export const App: React.FC = () => {
@@ -29,7 +26,7 @@ export const App: React.FC = () => {
 
   return (
     <SmoothScrollProvider>
-      <div className="relative bg-[#0a0801] text-[#d9d7d4] min-h-screen selection:bg-[#d9d7d4] selection:text-[#0a0801] overflow-x-hidden font-sans">
+      <div className="relative bg-[#0D0B08] text-[#F5E6C8] min-h-screen selection:bg-[#D4AF37] selection:text-[#0D0B08] overflow-x-hidden font-sans">
         
         {/* Subtle Film Grain Noise Overlay */}
         <div className="noise-overlay" />
@@ -37,12 +34,12 @@ export const App: React.FC = () => {
         {/* Ambient Drifting Mist Canvas */}
         <FogCanvas />
 
-        {/* 1. Split Horizontal Panel Preloader (Joseph Berry Goonies Style) */}
+        {/* 0-100% Preloader */}
         {!preloaderDone && (
-          <SplitPreloader onComplete={() => setPreloaderDone(true)} />
+          <Preloader onComplete={() => setPreloaderDone(true)} />
         )}
 
-        {/* Fixed Minimal Site Header */}
+        {/* Gold & Ivory Header */}
         <SiteHeader
           onOpenMenu={() => setMenuOpen(true)}
           onOpenConsultation={() => handleOpenConsultation()}
@@ -55,16 +52,13 @@ export const App: React.FC = () => {
           onOpenConsultation={() => handleOpenConsultation()}
         />
 
-        {/* 2. Joseph Berry 3D Masked Hero Parallax with Looping Video & Staggered Grid */}
+        {/* Master TVS Ronin-Style Animated Scrollytelling Experience */}
         <main>
-          <MaskedHeroParallax onOpenConsultation={() => handleOpenConsultation()} />
-          <CurtainPhilosophySection />
-          <StaggeredGridShowcase onOpenConsultation={handleOpenConsultation} />
-          <CompanySection onOpenConsultation={() => handleOpenConsultation()} />
+          <RoninStyleScrolly onOpenConsultation={handleOpenConsultation} />
         </main>
 
-        {/* Oversized Editorial Footer */}
-        <SiteFooter onOpenConsultation={() => handleOpenConsultation()} />
+        {/* Fixed Mobile Bottom 1-Thumb Action Bar */}
+        <MobileBottomBar onOpenConsultation={() => handleOpenConsultation()} />
 
         {/* Minimalist Contact Modal Drawer */}
         <ContactModal
